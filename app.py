@@ -302,8 +302,13 @@ if generate:
     )
 
     top_features = (
-        importance_df.head(5)
+    importance_df
+    .sort_values(
+        by="AbsoluteImpact",
+        ascending=False
     )
+)
+
 
     # --------------------------------------------------------
     # USER INTERFACE TABS
@@ -462,116 +467,280 @@ if generate:
         st.pyplot(fig)
 
     # ========================================================
-    # TAB 3 : SHAP EXPLAINABILITY
+    # TAB 3 : EXPLAINABILITY
     # ========================================================
 
     with tab3:
 
-        st.subheader(
-            "🔍 Explainable AI Insights"
+        st.subheader("🔍 Why AURA Recommended This Pathway")
+
+        # ----------------------------------------------------
+        # PATHWAY-SPECIFIC EXPLANATIONS
+        # ----------------------------------------------------
+
+        pathway_explanations = {
+
+            "Artificial Intelligence":
+                """
+                Based on your academic profile, AURA identified a strong alignment
+                with Artificial Intelligence.
+
+                This pathway is suitable for students interested in intelligent
+                systems, machine learning, automation, computer vision, and
+                advanced problem-solving technologies.
+
+                Possible careers include:
+
+                • AI Engineer
+                • Machine Learning Engineer
+                • AI Researcher
+                • Data Scientist
+                """,
+
+            "Data Science":
+                """
+                AURA found that your strengths align well with Data Science.
+
+                This pathway emphasizes data analytics, predictive modeling,
+                statistical analysis, and data-driven decision making.
+
+                Possible careers include:
+
+                • Data Scientist
+                • Data Analyst
+                • Business Intelligence Analyst
+                • Analytics Specialist
+                """,
+
+            "Cybersecurity":
+                """
+                AURA identified Cybersecurity as the most suitable pathway
+                based on your profile.
+
+                This pathway focuses on information security, ethical hacking,
+                network defense, risk management, and cyber threat detection.
+
+                Possible careers include:
+
+                • Cybersecurity Analyst
+                • Security Analyst
+                • Penetration Tester
+                • SOC Analyst
+                """,
+
+            "Software Engineering":
+                """
+                AURA recommends Software Engineering because your profile
+                demonstrates strong potential for software development and
+                systems design.
+
+                This pathway focuses on application development, software
+                architecture, testing, deployment, and project implementation.
+
+                Possible careers include:
+
+                • Software Developer
+                • Software Engineer
+                • Full Stack Developer
+                • Solutions Architect
+                """,
+
+            "Information Systems":
+                """
+                AURA recommends Information Systems because your profile
+                aligns with technology-enabled business solutions and
+                organizational information management.
+
+                This pathway focuses on systems analysis, business processes,
+                project management, and IT governance.
+
+                Possible careers include:
+
+                • Systems Analyst
+                • IT Manager
+                • Project Coordinator
+                • Business Systems Consultant
+                """
+        }
+
+        st.success(
+            pathway_explanations.get(
+                pathway,
+                "AURA has identified a suitable pathway based on your profile."
+            )
         )
 
-        st.write("""
-        AURA uses SHAP
-        (SHapley Additive Explanations)
-        to determine which factors had
-        the greatest influence on the
-        recommendation.
-        """)
+    # ----------------------------------------------------
+    # STUDENT STRENGTHS
+    # ----------------------------------------------------
 
-        st.divider()
+    st.subheader("✅ Your Strengths")
 
-        st.subheader(
-            "Top Recommendation Factors"
+    strengths = []
+
+    if programming >= 90:
+        strengths.append(
+            "Strong programming and technical skills."
         )
 
-        for _, row in top_features.iterrows():
-
-            contribution = row[
-                "Contribution"
-            ]
-
-            if contribution >= 0:
-
-                st.success(
-                    f"⬆️ {row['Feature']} "
-                    f"({contribution:.4f})"
-                )
-
-            else:
-
-                st.error(
-                    f"⬇️ {row['Feature']} "
-                    f"({contribution:.4f})"
-                )
-
-        st.divider()
-
-        st.subheader(
-            "📈 SHAP Feature Importance"
+    if mathematics >= 85:
+        strengths.append(
+            "Strong analytical and mathematical ability."
         )
 
-        fig2, ax2 = plt.subplots(
-            figsize=(8, 4)
+    if statistics >= 85:
+        strengths.append(
+            "Good data interpretation and problem-solving skills."
         )
 
-        colors = [
-
-            "#10B981"
-            if value >= 0
-            else "#EF4444"
-
-            for value in top_features[
-                "Contribution"
-            ]
-
-        ]
-
-        ax2.barh(
-
-            top_features["Feature"],
-
-            top_features["Contribution"],
-
-            color=colors
-
+    if gpa >= 3.5:
+        strengths.append(
+            "Excellent academic performance."
         )
 
-        ax2.set_xlabel(
-            "Contribution Strength"
+    if len(strengths) == 0:
+        strengths.append(
+            "Balanced academic profile across evaluated areas."
         )
 
-        ax2.set_title(
-            "Feature Influence on Recommendation"
+    for item in strengths:
+        st.write(f"• {item}")
+
+    # ----------------------------------------------------
+    # AREAS FOR GROWTH
+    # ----------------------------------------------------
+
+    st.subheader("📈 Areas for Growth")
+
+    improvements = []
+
+    if programming < 85:
+        improvements.append(
+            "Continue strengthening programming and software development skills."
         )
 
-        st.pyplot(fig2)
-
-        st.divider()
-
-        st.subheader(
-            "Feature Importance Summary"
+    if mathematics < 85:
+        improvements.append(
+            "Improve mathematical and analytical problem-solving skills."
         )
 
-        st.dataframe(
-            top_features[
-                [
-                    "Feature",
-                    "Contribution"
-                ]
-            ],
-            use_container_width=True
+    if statistics < 85:
+        improvements.append(
+            "Develop statistical and data interpretation competencies."
         )
 
-        st.info("""
-        Positive SHAP values increased the
-        likelihood of the recommended pathway,
-        while negative values reduced its
-        likelihood. These explanations improve
-        transparency and help users understand
-        the recommendation process.
-        """)
+    if gpa < 3.0:
+        improvements.append(
+            "Focus on improving overall academic performance."
+        )
 
+    if len(improvements) == 0:
+        improvements.append(
+            "Maintain your current performance and continue gaining practical experience through projects, internships, and certifications."
+        )
+
+    for item in improvements:
+        st.write(f"• {item}")
+
+    # ----------------------------------------------------
+    # PATHWAY MATCH SCORE
+    # ----------------------------------------------------
+
+    st.subheader("🎯 Pathway Match")
+
+    match_score = min(
+        round(confidence * 1.2, 1),
+        100
+    )
+
+    st.progress(match_score / 100)
+
+    st.write(
+        f"Your profile has an estimated **{match_score}% match** with the recommended pathway."
+    )
+
+    # ----------------------------------------------------
+    # SHAP INSIGHTS
+    # ----------------------------------------------------
+
+    st.subheader("🤖 AI Decision Factors")
+
+    st.write(
+        "The following factors had the greatest influence on AURA's recommendation."
+    )
+
+    for _, row in top_features.iterrows():
+
+        contribution = row["Contribution"]
+
+        if contribution >= 0:
+
+            st.success(
+                f"✅ {row['Feature']} positively supported the recommendation."
+            )
+
+        else:
+
+            st.warning(
+                f"⚠️ {row['Feature']} had a weaker alignment with the recommendation."
+            )
+
+    # ----------------------------------------------------
+    # SHAP CHART
+    # ----------------------------------------------------
+
+    st.subheader("📊 Feature Influence Analysis")
+
+    fig2, ax2 = plt.subplots(
+        figsize=(8, 4)
+    )
+
+    colors = [
+
+        "#10B981"
+        if value >= 0
+        else "#EF4444"
+
+        for value in top_features["Contribution"]
+
+    ]
+
+    ax2.barh(
+    top_features["Feature"],
+    top_features["AbsoluteImpact"],
+    color=colors
+)
+
+    ax2.set_title(
+        "Feature Influence on Recommendation"
+    )
+
+    ax2.set_xlabel(
+        "Contribution Strength"
+    )
+
+    st.pyplot(fig2)
+
+    # ----------------------------------------------------
+    # RECOMMENDATION SUMMARY
+    # ----------------------------------------------------
+
+    st.subheader("📋 Recommendation Summary")
+
+    st.info(
+        f"""
+        Recommended Pathway: {pathway}
+
+        Confidence Score: {confidence:.2f}%
+
+        Academic Readiness Score: {readiness:.1f}%
+
+        This recommendation was generated using AURA's
+        XGBoost recommendation engine and Explainable AI (SHAP)
+        analysis based on your academic profile, interests,
+        and career goals.
+        """
+    )
 # ------------------------------------------------------------
 # FOOTER
 # ------------------------------------------------------------
