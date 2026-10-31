@@ -103,12 +103,13 @@ st.divider()
 
 st.sidebar.header("📚 Student Profile")
 
-gpa = st.sidebar.number_input(
-    "GPA",
-    min_value=1.00,
-    max_value=5.00,
-    value=2.00,
-    step=0.01
+gpa = st.sidebar.selectbox(
+    "FEU Tech Grade",
+    [4.0, 3.5, 3.0, 2.5, 2.0, 1.5, 1.0, 0.5]
+)
+
+st.sidebar.caption(
+    "FEU Tech Grading System: 4.0 = Highest Academic Achievement"
 )
 
 programming = st.sidebar.slider(
@@ -373,22 +374,21 @@ if generate:
 
         career_map = {
 
-            "Artificial Intelligence":
-                "AI Engineer, Machine Learning Engineer, AI Researcher",
+    "Artificial Intelligence":
+        "AI Engineer, Machine Learning Engineer, AI Researcher",
 
-            "Data Science":
-                "Data Analyst, Data Scientist, Business Intelligence Analyst",
+    "Data Science":
+        "Data Scientist, Data Analyst, Business Intelligence Analyst",
 
-            "Cybersecurity":
-                "Security Analyst, SOC Analyst, Penetration Tester",
+    "Cybersecurity":
+        "Cybersecurity Analyst, Security Analyst, Penetration Tester",
 
-            "Software Engineering":
-                "Software Developer, Full Stack Developer, Solutions Architect",
+    "Software Engineering":
+        "Software Developer, Software Engineer, Full Stack Developer",
 
-            "Information Systems":
-                "Systems Analyst, IT Manager, Project Coordinator"
-
-        }
+    "Information Systems":
+        "Systems Analyst, IT Manager, Project Coordinator"
+}
 
         st.subheader(
             "🚀 Suggested Career Opportunities"

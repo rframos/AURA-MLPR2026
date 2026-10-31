@@ -1,11 +1,55 @@
 GPA,Programming,Mathematics,Statistics,Interest,CareerGoal,Pathway
-1.50,95,92,90,AI,Data Scientist,Artificial Intelligence
-1.75,90,85,88,AI,ML Engineer,Artificial Intelligence
-2.00,85,80,85,Analytics,Data Analyst,Data Science
-2.25,80,78,82,Analytics,Business Analyst,Data Science
-1.80,88,82,79,Cybersecurity,Security Analyst,Cybersecurity
-2.10,84,76,75,Cybersecurity,Penetration Tester,Cybersecurity
-1.90,92,78,74,Programming,Software Developer,Software Engineering
-2.30,86,72,70,Programming,Software Engineer,Software Engineering
-2.20,75,70,72,Information Systems,System Analyst,Information Systems
-2.50,72,68,70,Information Systems,IT Manager,Information Systems
+4.0,98,97,96,AI,AI Engineer,Artificial Intelligence
+4.0,96,95,97,AI,Machine Learning Engineer,Artificial Intelligence
+4.0,97,94,95,AI,AI Engineer,Artificial Intelligence
+3.5,95,93,94,AI,Machine Learning Engineer,Artificial Intelligence
+3.5,94,92,93,AI,AI Engineer,Artificial Intelligence
+3.5,92,91,92,AI,Machine Learning Engineer,Artificial Intelligence
+3.0,91,90,89,AI,AI Engineer,Artificial Intelligence
+3.0,90,88,90,AI,Machine Learning Engineer,Artificial Intelligence
+2.5,88,87,86,AI,AI Engineer,Artificial Intelligence
+2.5,87,85,85,AI,Machine Learning Engineer,Artificial Intelligence
+
+4.0,96,97,99,Data Science,Data Scientist,Data Science
+4.0,95,96,98,Data Science,Data Analyst,Data Science
+3.5,94,95,97,Data Science,Data Scientist,Data Science
+3.5,93,94,95,Data Science,Data Analyst,Data Science
+3.5,92,93,94,Data Science,Data Scientist,Data Science
+3.0,91,92,93,Data Science,Data Analyst,Data Science
+3.0,90,90,92,Data Science,Data Scientist,Data Science
+3.0,89,89,91,Data Science,Business Intelligence Analyst,Data Science
+2.5,87,88,90,Data Science,Data Analyst,Data Science
+2.5,86,87,89,Data Science,Business Intelligence Analyst,Data Science
+
+4.0,96,92,90,Cybersecurity,Cybersecurity Analyst,Cybersecurity
+4.0,95,91,89,Cybersecurity,Security Analyst,Cybersecurity
+3.5,94,90,88,Cybersecurity,Cybersecurity Analyst,Cybersecurity
+3.5,93,89,87,Cybersecurity,Security Analyst,Cybersecurity
+3.5,92,88,86,Cybersecurity,Penetration Tester,Cybersecurity
+3.0,91,87,85,Cybersecurity,Penetration Tester,Cybersecurity
+3.0,90,86,84,Cybersecurity,SOC Analyst,Cybersecurity
+3.0,89,85,83,Cybersecurity,Cybersecurity Analyst,Cybersecurity
+2.5,87,84,82,Cybersecurity,Security Analyst,Cybersecurity
+2.5,86,83,81,Cybersecurity,SOC Analyst,Cybersecurity
+
+4.0,99,89,84,Software Engineering,Software Developer,Software Engineering
+4.0,98,88,83,Software Engineering,Software Engineer,Software Engineering
+3.5,96,87,82,Software Engineering,Software Developer,Software Engineering
+3.5,95,86,81,Software Engineering,Software Engineer,Software Engineering
+3.5,94,85,80,Software Engineering,Full Stack Developer,Software Engineering
+3.0,93,84,79,Software Engineering,Software Developer,Software Engineering
+3.0,92,83,78,Software Engineering,Software Engineer,Software Engineering
+3.0,91,82,77,Software Engineering,Full Stack Developer,Software Engineering
+2.5,89,81,76,Software Engineering,Software Developer,Software Engineering
+2.5,88,80,75,Software Engineering,Solutions Architect,Software Engineering
+
+4.0,94,92,90,Information Systems,Systems Analyst,Information Systems
+4.0,93,91,89,Information Systems,IT Manager,Information Systems
+3.5,92,90,88,Information Systems,Systems Analyst,Information Systems
+3.5,91,89,87,Information Systems,IT Manager,Information Systems
+3.5,90,88,86,Information Systems,Project Coordinator,Information Systems
+3.0,89,87,85,Information Systems,Systems Analyst,Information Systems
+3.0,88,86,84,Information Systems,IT Manager,Information Systems
+3.0,87,85,83,Information Systems,Project Coordinator,Information Systems
+2.5,86,84,82,Information Systems,Systems Analyst,Information Systems
+2.5,85,83,81,Information Systems,IT Manager,Information Systems
